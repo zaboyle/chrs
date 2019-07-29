@@ -10,25 +10,41 @@
             </div>
 
             <ul class="list-unstyled components">
+                <% if(activeTab === 'home') { %>
                 <li class="active">
+                <% } else  { %>
+                <li>
+                <% } %>
                     <a href="/">
                         <i class="fas fa-home"></i>
                         Home
                     </a>
                 </li>
+                <% if(activeTab === 'groups') { %>
+                <li class="active">
+                <% } else { %>
                 <li>
+                <% } %>
                     <a href="/groups">
                         <i class="fas fa-users"></i>
                         Groups
                     </a>
                 </li>
+                <% if(activeTab === 'account') { %>
+                <li class="active">
+                <% } else  { %>
                 <li>
+                <% } %>
                     <a href="/account">
                         <i class="fas fa-user"></i>
                         Account
                     </a>
                 </li>
+                <% if(activeTab === 'settings') { %>
+                <li class="active">
+                <% } else  { %>
                 <li>
+                <% } %>
                     <a href="/settings">
                         <i class="fas fa-cog"></i>
                         Settings

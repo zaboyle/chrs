@@ -1,7 +1,7 @@
 <% include partials/header %>
-<link rel="stylesheet" href="/stylesheets/home.css">
+<link rel="stylesheet" href="/stylesheets/sidebar.css">
 <link rel="stylesheet" href="/stylesheets/groups.css">
-<% include partials/sidebar %>
+<%- include('partials/sidebar', {activeTab: 'groups'}); %>
 
 
 <!-- Page Content  -->
@@ -9,14 +9,18 @@
     <!-- top section -->
     <div class="row d-flex flex-row justify-content-between">
         <h1 class="col-3">My Groups</h1>
-        <button type="button" id="sidebarCollapse" class="btn btn-dark">
-            <i class="fas fa-align-left"></i>
-            <span>Toggle Sidebar</span>
-        </button>
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#newGroup">
-            <i class="fas fa-plus-square"></i>
-            <span>Group</span>
-        </button>
+
+        <div>
+            <button type="button" id="plusGroup" class="btn btn-dark" data-toggle="modal" data-target="#newGroup">
+                <i class="fas fa-plus-square"></i>
+                <span>Group</span>
+            </button>
+            <button type="button" id="sidebarCollapse" class="btn btn-dark">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+
     </div>
     <!-- hr -->
     <div class="row d-flex flex-row">
@@ -90,6 +94,6 @@
 
 
 <% include partials/scripts %>
-<script src="/javascripts/home.js"></script>
+<script src="/javascripts/sidebar.js"></script>
 <script src="/javascripts/groups.js"></script>
 <% include partials/footer %>

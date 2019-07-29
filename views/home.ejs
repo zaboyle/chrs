@@ -1,6 +1,7 @@
 <% include partials/header %>
+<link rel="stylesheet" href="/stylesheets/sidebar.css">
 <link rel="stylesheet" href="/stylesheets/home.css">
-<% include partials/sidebar %>
+<%- include('partials/sidebar', {activeTab: 'home'}); %>
 
 <!-- Page Content  -->
 <div id="content" class="container mt-3">
@@ -8,8 +9,7 @@
 	<div class="row d-flex flex-row justify-content-between">
 		<h1 class="col-3">Jobs</h1>
 		<button type="button" id="sidebarCollapse" class="btn btn-dark">
-			<i class="fas fa-align-left"></i>
-			<span>Toggle Sidebar</span>
+			<i class="fas fa-bars"></i>
 		</button>
 	</div>
 	<div class="row d-flex flex-row">
@@ -52,5 +52,6 @@
 </div>
 
 <% include partials/scripts %>
+<script src="/javascripts/sidebar.js"></script>
 <script src="/javascripts/home.js"></script>
 <% include partials/footer %>

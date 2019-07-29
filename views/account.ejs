@@ -1,21 +1,15 @@
 <% include partials/header %>
-<link rel="stylesheet" href="/stylesheets/home.css">
+<link rel="stylesheet" href="/stylesheets/sidebar.css">
 <link rel="stylesheet" href="/stylesheets/account.css">
-<% include partials/sidebar %>
-
+<%- include('partials/sidebar', {activeTab: 'account'}); %>
 
 <!-- Page Content  -->
 <div class="container mt-3">
 	<!-- top section -->
 	<div class="row d-flex flex-row justify-content-between">
-		<h1 class="col-3">My Groups</h1>
+		<h1 class="col-3">Account</h1>
 		<button type="button" id="sidebarCollapse" class="btn btn-dark">
-			<i class="fas fa-align-left"></i>
-			<span>Toggle Sidebar</span>
-		</button>
-		<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#newGroup">
-			<i class="fas fa-plus-square"></i>
-			<span>Group</span>
+			<i class="fas fa-bars"></i>
 		</button>
 	</div>
 	<!-- hr -->
@@ -24,10 +18,99 @@
 			<hr>
 		</div>
 	</div>
+
+	<!-- Credentials -->
+
+	<div class="row flex-row justify-content-center mb-3">
+		<div class="col-6">
+			<form action="updateProfile" method="POST">
+				<!-- placeholders should be the users info -->
+				<h2>Contact Info</h2>
+				<hr>
+
+				<div class="form-group row">
+					<div class="col">
+						<label for="fname">First Name</label>
+						<input type="text" class="form-control" placeholder="First name" required>
+					</div>
+					<div class="col">
+						<label for="lname">Last Name</label>
+						<input type="text" class="form-control" placeholder="Last name" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" class="form-control" id="inputEmail" placeholder="zboyle@umich.edu" required>
+				</div>
+				<div class="form-group">
+					<label for="pass">Phone Number</label>
+					<input type="tel" class="form-control" id="inputPass" placeholder="248-222-3345" required>
+				</div>
+				<div class="form-group">
+					<label for="pass">Password</label>
+					<input type="password" class="form-control" id="inputPass" placeholder="passw0rd" required>
+				</div>
+
+				<h2>Notifications</h2>
+				<hr>
+				<div class="form-group">
+					<label for="emailPrefs">Email Preferences</label>
+					<select class="custom-select" required>
+						<option value="">frequency</option>
+						<option value="0">No emails</option>
+						<option value="1">Every week</option>
+						<option value="2">Every day</option>
+					</select>
+					<small class="form-text text-muted">How often you would like email reminders</small>
+				</div>
+				<div class="form-group">
+					<label for="textPrefs">Phone Preferences</label>
+					<select class="custom-select" required>
+						<option value="">frequency</option>
+						<option value="0">No texts</option>
+						<option value="1">Every week</option>
+						<option value="2">Every day</option>
+					</select>
+					<small class="form-text text-muted">How often you would like text reminders</small>
+				</div>
+					<button class="btn btn-primary" id="updateBtn" name="newSettings">Update Account</button>
+			</form>
+			<br>
+			<br>
+
+			<h3>Delete Account</h3>
+			<hr>
+			<!-- Button trigger modal -->
+			<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAcctModal">
+				Delete
+			</button>
+
+			<!-- Modal -->
+			<div class="modal fade" id="deleteAcctModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="ModalLabel">Delete Account</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							Are you sure you want to delete your account?
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+							<button type="button" id="deleteAcctBtn" class="btn btn-danger">Yes, I'm sure</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
-
 <% include partials/scripts %>
-<script src="/javascripts/home.js"></script>
+<script src="/javascripts/sidebar.js"></script>
 <script src="/javascripts/account.js"></script>
 <% include partials/footer %>
