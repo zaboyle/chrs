@@ -1,45 +1,44 @@
 var createError = require('http-errors');
 var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
 // view engine setup
-// use html instead of jade
-app.set('views', path.join(__dirname, 'views'));
-app.engine('html', require('ejs').renderFile);
+// use ejs instead of jade
 //changed from jade
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
+app.use(express.static('views'));
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'views')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+// ==================================================== //
+//                     ROUTES                           //
+// ==================================================== //
+app.get('/', (req, res) => {
+  // TODO: pass in user to display their jobs
+  res.render('home');
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.get('/groups', (req, res) => {
+  // TODO: pass in the user to display user's groups
+  res.render('groups');
+});
 
-  // render the error page
-  res.status(err.status || 500);
+app.get('/account', (req, res) => {
+  // TODO: pass in the user to display user's accoutn
+  res.render('account');
+});
+
+app.get('/settings', (req, res) => {
+  // TODO: pass in the user to display user's personal settings
+  res.render('settings');
+});
+
+app.get('*', (req, res) => {
+  // TODO: pass in the user to display user's personal settings
   res.render('error');
 });
 
-module.exports = app;
+// listen on port 3000
+app.listen(3000, () => {
+  console.log('serving on port 3000');
+});

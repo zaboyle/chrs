@@ -1,0 +1,33 @@
+<% include partials/header %>
+<link rel="stylesheet" href="/stylesheets/home.css">
+<link rel="stylesheet" href="/stylesheets/settings.css">
+<% include partials/sidebar %>
+
+
+<!-- Page Content  -->
+<div class="container mt-3">
+	<!-- top section -->
+	<div class="row d-flex flex-row justify-content-between">
+		<h1 class="col-3">My Groups</h1>
+		<button type="button" id="sidebarCollapse" class="btn btn-dark">
+			<i class="fas fa-align-left"></i>
+			<span>Toggle Sidebar</span>
+		</button>
+		<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#newGroup">
+			<i class="fas fa-plus-square"></i>
+			<span>Group</span>
+		</button>
+	</div>
+	<!-- hr -->
+	<div class="row d-flex flex-row">
+		<div class="col-6">
+			<hr>
+		</div>
+	</div>
+</div>
+
+
+<% include partials/scripts %>
+<script src="/javascripts/home.js"></script>
+<script src="/javascripts/settings.js"></script>
+<% include partials/footer %>
